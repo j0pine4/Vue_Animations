@@ -1,18 +1,50 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <h1> Home </h1>
+  <transition name='fade'>
+    <p v-if="show"> Hidden Message </p>
+  </transition>
+  <button @click="toggle"> Toggle </button>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      show : true
+    }
+  },
+  methods : {
+    toggle() {
+      this.show = !this.show
+    },
   }
 }
 </script>
+
+<style>
+
+  .fade-enter-from{
+    opacity: 0;
+  }
+
+  .fade-enter-to{
+    opacity: 1;
+  }
+
+  .fade-enter-active{
+    transition: all 0.4s ease;
+  }
+
+  .fade-leave-from{
+    opacity: 1;
+  }
+
+  .fade-leave-to{
+    opacity: 0;
+  }
+
+  .fade-leave-active{
+    transition: all 0.4s ease;
+  }
+
+</style>
